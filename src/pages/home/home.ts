@@ -33,6 +33,9 @@ export class HomePage {
     this.geolocation.getCurrentPosition().then((position) => {
  
       this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      this.socket = io('http://13.127.248.47:8080');
+      this.socket.emit('transmitLocation',{Longitude:position.coords.longitude,Latitude:position.coords.latitude});
  
       let mapOptions = {
         center: this.latLng,
@@ -64,6 +67,9 @@ export class HomePage {
         'Latitude': data.coords.latitude,
         'Longitude': data.coords.longitude
       }
+
+      console.log(dataPos);
+
       this.newPosition(dataPos);
     });
 
