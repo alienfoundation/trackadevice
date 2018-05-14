@@ -82,11 +82,19 @@ export class HomePage {
   addMarker(){
 
     console.log("in add marker");
+
+    var icon = {
+      url: "../../assets/imgs/bus.png", // url
+      scaledSize: new google.maps.Size(30, 55), // scaled size
+      origin: new google.maps.Point(0,0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+  };
  
     this.marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.latLng,
+      icon: icon
     });
    
   }
