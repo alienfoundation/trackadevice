@@ -16,6 +16,7 @@ export class TrackerPage {
  
   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
  
+    this.loadMap();
   }
 
   task:any;
@@ -23,7 +24,6 @@ export class TrackerPage {
   ionViewDidLoad(){
     this.loadMap();
     // this.task = setInterval(this.updateMap.bind(this), 4000);
-    this.updateMap();
   }
 
   lat: any;
@@ -31,8 +31,10 @@ export class TrackerPage {
   latLng: any;
  
   loadMap(){
+
+    console.log("in load map");
       this.geolocation.getCurrentPosition().then((position) => {
-          this.latLng = new google.maps.LatLng(28.7495, 77.0565);
+          this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           let mapOptions = {
               center: this.latLng,
               zoom: 15,
@@ -62,6 +64,8 @@ export class TrackerPage {
       position: this.latLng,
       icon: icon
     });
+
+    this.updateMap();
     // let content = "<p>I am Here!</p>";         
     // this.addInfoWindow(marker, content);
   }

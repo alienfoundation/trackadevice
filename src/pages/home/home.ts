@@ -31,7 +31,7 @@ export class HomePage {
     console.log('hi');
  
     this.geolocation.getCurrentPosition().then((position) => {
- 
+      console.log(position.coords.latitude);
       this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
       this.socket = io('http://13.127.248.47:8080');
@@ -106,7 +106,7 @@ export class HomePage {
   }
 
   aaglaPage(){
-    this.navCtrl.push(TrackerPage);
+    this.navCtrl.setRoot(TrackerPage);
   }
 
 }

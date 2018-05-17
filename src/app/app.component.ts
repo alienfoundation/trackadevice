@@ -13,7 +13,7 @@ import { TrackerPage } from '../pages/tracker/tracker';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = TrackerPage;
 
   pages: Array<{title: string, component: any}>;
 
